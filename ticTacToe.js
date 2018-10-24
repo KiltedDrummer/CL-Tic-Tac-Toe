@@ -33,6 +33,32 @@ const winConditions =() => {
 }
 // prompt user
 
+const newGame = (message = '') => {
+  console.log(message);
+  rl.question('Would you like to play another game? (Y / N)   ', answer => {
+    if (answer === 'Y') {
+      board = {
+        '1': 1,
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+        '7': 7,
+        '8': 8,
+        '9': 9,
+      };
+      player = 'X';
+      prompt();
+    } else if (answer === 'N') {
+      console.log('thanks for Playing!');
+      rl.close();
+    } else {
+      newGame('Please enter a valid option. ')
+    }
+  })
+}
+
 const prompt = () => {
   console.log(`\n ${board[1]} | ${board[2]} | ${board[3]} \n___|___|___\n ${board[4]} | ${board[5]} | ${board[6]} \n___|___|___\n ${board[7]} | ${board[8]} | ${board[9]} \n   |   |   `);
 
@@ -45,26 +71,7 @@ const prompt = () => {
     }
     if (winConditions()) {
       console.log(`Player ${winConditions()} Wins!`);
-      rl.question('Would you like to play another game? (Y / N)', answer => {
-        if (answer === 'Y') {
-          board = {
-            '1': 1,
-            '2': 2,
-            '3': 3,
-            '4': 4,
-            '5': 5,
-            '6': 6,
-            '7': 7,
-            '8': 8,
-            '9': 9,
-          };
-          player = 'X';
-          prompt();
-        } else if (answer === 'N') {
-          console.log('thanks for Playing!');
-          rl.close();
-        }
-      })
+      newGame();
     }
     prompt();
 
