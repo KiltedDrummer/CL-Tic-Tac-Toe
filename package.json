@@ -1,0 +1,19 @@
+{
+  "name": "cl-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "command line game of tic-tac-toe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiltedDrummer/CL-Tic-Tac-Toe.git"
+  },
+  "author": "Nicholas Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiltedDrummer/CL-Tic-Tac-Toe/issues"
+  },
+  "homepage": "https://github.com/KiltedDrummer/CL-Tic-Tac-Toe#readme"
+}
