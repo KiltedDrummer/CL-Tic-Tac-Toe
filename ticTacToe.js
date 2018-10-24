@@ -20,7 +20,17 @@ const rl = readline.createInterface({
 });
 
 // check for solution
-
+const winConditions =() => {
+  let boardArray = Object.keys(board).map(key => board[key]);
+  if ((boardArray[0] === boardArray[1] && boardArray[1] === boardArray[2]) || (boardArray[3] === boardArray[4] && boardArray[4] === boardArray[5]) || (boardArray[6] === boardArray[7] && boardArray[7] === boardArray[8])) {
+    return boardArray[0];
+  } else if ((boardArray[0] === boardArray[3] && boardArray[3] === boardArray[6]) || (boardArray[1] === boardArray[4] && boardArray[4] === boardArray[7]) || (boardArray[2] === boardArray[5] && boardArray[5] === boardArray[8])) {
+    return boardArray[0];
+  } else if ((boardArray[0] === boardArray[4] && boardArray[4] === boardArray[8]) || (boardArray[2] === boardArray[4] && boardArray[4] === boardArray[6])) {
+    return boardArray[0];
+  }
+  return null
+}
 // prompt user
 
 const prompt = () => {
@@ -32,6 +42,29 @@ const prompt = () => {
     } else {
       board[answer] = player;
       player = player === 'X' ? 'O' : 'X';
+    }
+    if (winConditions()) {
+      console.log(`Player ${winConditions()} Wins!`);
+      rl.question('Would you like to play another game? (Y / N)', answer => {
+        if (answer === 'Y') {
+          board = {
+            '1': 1,
+            '2': 2,
+            '3': 3,
+            '4': 4,
+            '5': 5,
+            '6': 6,
+            '7': 7,
+            '8': 8,
+            '9': 9,
+          };
+          player = 'X';
+          prompt();
+        } else if (answer === 'N') {
+          console.log('thanks for Playing!');
+          rl.close();
+        }
+      })
     }
     prompt();
 
